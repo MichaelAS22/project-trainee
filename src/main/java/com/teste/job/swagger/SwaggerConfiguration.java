@@ -7,11 +7,8 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.util.Arrays;
 
 
 @Configuration
@@ -22,38 +19,19 @@ public class SwaggerConfiguration {
     public Docket getDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.teste.job"))
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
-                .build()
-                .apiInfo(metaData());
-//                .securityContexts(Arrays.asList(getSecurityContext()))
-//                .securitySchemes(Arrays.asList(basicAuthScheme()));
+                .build();
+//                .apiInfo(metaData());
     }
 
-//    private SecurityScheme basicAuthScheme() {
-//        return new BasicAuth("basicAuth");
-//    }
-//
-//    private SecurityContext getSecurityContext() {
-//        return SecurityContext.builder()
-//                .securityReferences(Arrays.asList(basicAuthReference()))
+//    private ApiInfo metaData() {
+//        return new ApiInfoBuilder()
+//                .title("Contract REST API")
+//                .description("Spring Boot RESP API for Contract")
+//                .version("1.0.0")
+//                .license("Apache License Version 2.0")
+//                .licenseUrl("https://www.apache.org/licenses/License-2.0")
 //                .build();
 //    }
-//
-//    private SecurityReference basicAuthReference() {
-//        return new SecurityReference("basicAuth", new AuthorizationScope[0]);
-//
-//
-//    }
-
-    private ApiInfo metaData() {
-        return new ApiInfoBuilder()
-                .title("Contract REST API")
-                .description("Spring Boot RESP API for Contract")
-                .version("1.0.0")
-                .license("Apache License Version 2.0")
-                .licenseUrl("https://www.apache.org/licenses/License-2.0")
-                .build();
-    }
-
 }
