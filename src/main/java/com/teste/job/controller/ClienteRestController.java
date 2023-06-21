@@ -6,8 +6,6 @@ import com.teste.job.controller.dto.ClienteDTO;
 import com.teste.job.controller.mapper.ClienteMapper;
 import com.teste.job.model.Cliente;
 import com.teste.job.service.impl.ClienteService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.var;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cliente")
-@Api(tags = "ClienteRestController")
+@RequestMapping("cliente")
 public class ClienteRestController {
 
     private final ClienteService clienteService;
@@ -29,7 +26,6 @@ public class ClienteRestController {
     }
 
     @GetMapping
-    @ApiOperation("Encontre todos os clientes")
     public ResponseEntity<List<ClienteDTO>> findAll() {
         List<Cliente> clienteList = clienteService.findAll();
         List<ClienteDTO> resultado = clienteMapper.toClienteDTOList(clienteList);
