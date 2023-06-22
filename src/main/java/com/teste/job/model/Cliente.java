@@ -6,8 +6,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-@Table(name = "clientes")
+// classe referente a tabela contratos
+@Table(name = "contratos")
 @Entity
 public class Cliente {
 
@@ -21,9 +23,11 @@ public class Cliente {
     @Column(name = "pessoa_cpf_cnpj")
     private String cpfCnpj;
 
+    @NotNull
     @Column(name = "data_inicio")
     private LocalDateTime inicio;
 
+    @NotNull
     @Column(name = "data_validade")
     private LocalDateTime validade;
 
